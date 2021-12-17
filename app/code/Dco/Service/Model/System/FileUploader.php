@@ -1,8 +1,5 @@
 <?php
-/**
- * @author ArrowHiTech Team
- * @copyright Copyright (c) 2021 ArrowHiTech (https://www.arrowhitech.com)
- */
+
 namespace Dco\Service\Model\System;
 
 use Magento\Backend\Model\Session;

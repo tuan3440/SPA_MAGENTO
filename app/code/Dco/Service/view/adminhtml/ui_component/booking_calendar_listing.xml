@@ -113,6 +113,13 @@
                             <param name="status">3</param>
                         </item>
                     </item>
+                    <item name="3" xsi:type="array">
+                        <item name="type" xsi:type="string">boom</item>
+                        <item name="label" xsi:type="string" translate="true">Boom</item>
+                        <item name="url" xsi:type="url" path="booking/calendar/massStatus">
+                            <param name="status">4</param>
+                        </item>
+                    </item>
                 </argument>
             </action>
         </massaction>

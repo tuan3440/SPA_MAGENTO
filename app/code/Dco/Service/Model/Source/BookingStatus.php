@@ -11,6 +11,7 @@ class BookingStatus implements OptionSourceInterface, ArrayInterface
     const ACCEPT = 1;
     const DECLINE = 2;
     const COMPLETE = 3;
+    const BOOM=4;
     /**
      * Get options
      *
@@ -37,7 +38,8 @@ class BookingStatus implements OptionSourceInterface, ArrayInterface
             self::WAITING => __('Waitng'),
             self::ACCEPT => __('Accept'),
             self::DECLINE => __("Cancel"),
-            self::COMPLETE => __("Complete")
+            self::COMPLETE => __("Complete"),
+            self::BOOM => __("Boom")
         ];
     }
 }

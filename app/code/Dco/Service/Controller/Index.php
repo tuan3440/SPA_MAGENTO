@@ -1,8 +1,5 @@
 <?php
-/**
- * @author VuThuan
- * @copyright Copyright (c) 2021 VuThuan
- */
+
 namespace Dco\Service\Controller;
 
 use Magento\Framework\App\Action\Action;

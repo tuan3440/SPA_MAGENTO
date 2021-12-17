@@ -70,7 +70,7 @@ class Save extends Locator
             try {
                 $model = $this->locatorFactory->create();
                 if ($locatorId = (int)$this->getRequest()->getParam('locator_id')) {
-                    $model = $this->repository->getById($locatorId);
+                    $model = $model->load($locatorId);
                     if ($locatorId != $model->getId()) {
                         throw new LocalizedException(__('The wrong item is specified.'));
                     }
@@ -86,7 +86,7 @@ class Save extends Locator
 //                    ['locator' => $model, 'request' => $this->getRequest()]
 //                );
 
-                $this->repository->save($model);
+                $model->save();
                 $this->saveService($model, $data);
                 $this->messageManager->addSuccessMessage(__('You saved the item.'));
 

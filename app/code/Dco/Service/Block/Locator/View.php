@@ -36,6 +36,6 @@ class View extends Template
 
     public function getServiceId()
     {
-        return $this->getRequest()->getParam('service') ? $this->getRequest()->getParam('id') : null;
+        return $this->getRequest()->getParam('service') ? $this->getRequest()->getParam('service') : null;
     }
 }

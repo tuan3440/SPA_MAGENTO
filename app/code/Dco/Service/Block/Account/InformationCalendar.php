@@ -1,11 +1,5 @@
 <?php
-/**
- * Copyright © OpenTechiz, VietNam. All rights reserved.
- * See COPYING.txt for license details.
- * @package        OpenTechiz
- * @author         vuthuan <support@opentechiz.com>
- * @copyright      2021 Vu Thuan (03 2808 3090)
- */
+
 
 namespace Dco\Service\Block\Account;
 
@@ -15,7 +9,7 @@ use Magento\Framework\View\Element\Template;
 use Dco\Service\Model\ServiceFactory;
 use Dco\Service\Model\LocatorFactory;
 use Dco\Service\Model\Source\Hour;
-
+use DateTime;
 class InformationCalendar extends \Magento\Framework\View\Element\Template
 {
     protected $session;
@@ -64,11 +58,11 @@ class InformationCalendar extends \Magento\Framework\View\Element\Template
         $serviceId = $this->getServiceId();
         $locatorId = $this->getLocatorId();
         $date = $this->getDateBooking();
-        $time = strtotime($date);
-        $date = date('Y-m-d h:i:s',$time);
+        $datetime = DateTime::createFromFormat("d/m/Y", $date);
+        $time = $datetime->format('Y-m-d');
         $calendars = $this->calendar->create()->addFieldToFilter('service_id', $serviceId)
             ->addFieldToFilter("locator_id", $locatorId)
-            ->addFieldToFilter("date", $date)
+            ->addFieldToFilter("date", $time)
             ->addFieldToFilter("booking_status", 1);
         if ($calendars = $calendars->getItems()) {
             foreach ($calendars as $calendarItem) {

@@ -41,7 +41,7 @@ class UpgradeData implements UpgradeDataInterface
     ) {
         $setup->startSetup();
 
-        if (version_compare($context->getVersion(), '1.0.2') < 0) {
+        if (version_compare($context->getVersion(), '1.0.3') < 0) {
             $this->upgradeSchema201($setup);
         }
 
@@ -56,14 +56,10 @@ class UpgradeData implements UpgradeDataInterface
         $eavSetup = $this->eavSetupFactory->create(['setup' => $setup]);
         $customerSetup = $this->customerSetupFactory->create(['setup' => $setup]);
 
-        $eavSetup->removeAttribute(
-            \Magento\Customer\Model\Customer::ENTITY,
-            'point_reliable'
-        );
 
         $customerSetup->addAttribute(\Magento\Customer\Model\Customer::ENTITY, 'point', [
             'type' => 'varchar',
-            'label' => 'Country Code',
+            'label' => 'Point reliable',
             'input' => 'text',
             'source' => '',
             'required' => true,

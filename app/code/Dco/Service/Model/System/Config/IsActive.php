@@ -1,8 +1,5 @@
 <?php
-/**
- * @author VuThuan
- * @copyright Copyright (c) 2021 VuThuan
- */
+
 namespace Dco\Service\Model\System\Config;
 
 use Dco\Service\Model\Source\Status as Source;

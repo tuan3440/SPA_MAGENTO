@@ -101,7 +101,7 @@ class ListServices extends Template
                     'content' => $service->getContent(),
                     'image' => $this->getMediaImage($service->getImage()),
                     'price' => $service->getPriceService(),
-                    'url' => $this->urlBuilder->getUrl('bookings/immunisation', ['id' => $service->getServiceId()])
+                    'url' => $this->urlBuilder->getUrl('bookings/service', ['id' => $service->getServiceId()])
                 ];
             }
         }

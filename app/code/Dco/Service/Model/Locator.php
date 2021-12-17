@@ -1,8 +1,5 @@
 <?php
-/**
- * @author VuThuan
- * @copyright Copyright (c) 2021 VuThuan
- */
+
 namespace Dco\Service\Model;
 
 use Dco\Service\Api\Data\LocatorInterface;
@@ -13,11 +10,11 @@ use Magento\Framework\Model\AbstractModel;
 use Magento\Framework\Model\Context;
 use Magento\Framework\Registry;
 
-class Locator extends AbstractModel
+class Locator extends AbstractModel implements IdentityInterface
 {
     const STATUS_ACTIVE = 1;
     const STATUS_INACTIVE = 0;
-
+   const CACHE_TAG = 'spa_locator';
     public function __construct(
         Context $context,
         Registry $registry,
@@ -89,4 +86,8 @@ class Locator extends AbstractModel
     }
 
 
+    public function getIdentities()
+    {
+        return [self::CACHE_TAG . '_' . $this->getId()];
+    }
 }

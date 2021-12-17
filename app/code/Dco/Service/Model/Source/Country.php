@@ -1,8 +1,5 @@
 <?php
-/**
- * @author VuThuan
- * @copyright Copyright (c) 2021 VuThuan
- */
+
 namespace Dco\Service\Model\Source;
 
 use Magento\Directory\Model\ResourceModel\Country\Collection as CountryCollection;

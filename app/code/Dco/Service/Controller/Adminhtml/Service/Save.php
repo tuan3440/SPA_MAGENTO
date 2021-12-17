@@ -1,8 +1,5 @@
 <?php
-/**
- * @author ArrowHiTech Team
- * @copyright Copyright (c) 2021 ArrowHiTech (https://www.arrowhitech.com)
- */
+
 namespace Dco\Service\Controller\Adminhtml\Service;
 
 use Dco\Service\Api\ServiceRepositoryInterface;
@@ -57,7 +54,7 @@ class Save extends Service
                 $data = $this->getRequest()->getPostValue();
 
                 if ($serviceId = (int)$this->getRequest()->getParam('service_id')) {
-                    $model = $this->repository->getById($serviceId);
+                    $model = $model->load($serviceId);
                     if ($serviceId != $model->getserviceId()) {
                         throw new LocalizedException(__('The wrong item is specified.'));
                     }
@@ -65,7 +62,7 @@ class Save extends Service
 
                 $this->filterData($data);
                 $model->addData($data);
-                $this->repository->save($model);
+                $model->save();
                 $this->messageManager->addSuccessMessage(__('You saved the item.'));
 
                 if ($this->getRequest()->getParam('back')) {

@@ -1,11 +1,5 @@
 <?php
-/**
- * Copyright © OpenTechiz, VietNam. All rights reserved.
- * See COPYING.txt for license details.
- * @package        OpenTechiz
- * @author         vuthuan <support@opentechiz.com>
- * @copyright      2021 Vu Thuan (03 2808 3090)
- */
+
 
 namespace Dco\Service\Controller\Adminhtml\Calendar;
 
@@ -67,17 +61,15 @@ class MassStatus extends \Magento\Backend\App\Action
 
         foreach ($collection as $item) {
             $item->setBookingStatus($statusValue);
-            if ($statusValue == 1) {
-                $this->helper->sendEmail();
-            }
-            if ($statusValue == 2) {
-                $this->helper->sendEmail();
-            }
             if ($statusValue == 3) {
                 $customer = $this->customer->create()->load($item->getData("customer_id"));
                 $customer->setData("point", (int)$customer->getData("point") + 1);
                 $customer->save();
-                $this->helper->sendEmail();
+            }
+            if ($statusValue == 4) {
+                $customer = $this->customer->create()->load($item->getData("customer_id"));
+                $customer->setData("point", (int)$customer->getData("point") - 1);
+                $customer->save();
             }
             $item->save();
         }

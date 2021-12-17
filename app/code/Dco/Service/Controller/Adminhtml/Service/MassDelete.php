@@ -1,8 +1,5 @@
 <?php
-/**
- * @author ArrowHiTech Team
- * @copyright Copyright (c) 2021 ArrowHiTech (https://www.arrowhitech.com)
- */
+
 namespace Dco\Service\Controller\Adminhtml\Service;
 
 use Dco\Service\Api\ServiceRepositoryInterface;
@@ -69,8 +66,8 @@ class MassDelete extends Action
         $collectionSize = $collection->getSize();
         if ($collectionSize) {
             try {
-                foreach ($collection->getItems() as $service) {
-                    $this->repository->deleteById($service);
+                foreach ($collection as $service) {
+                    $service->delete();
                 }
                 $this->messageManager->addSuccessMessage($this->getSuccessMessage($collectionSize));
             } catch (LocalizedException $e) {
